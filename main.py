@@ -276,7 +276,7 @@ def main():
     pwd = "Irislyx1024"
     if login(username, pwd):
         print "login success"
-        count = 0
+        count = -1
         while True:
             count += 1
             print str(datetime.now())
