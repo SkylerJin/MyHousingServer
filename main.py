@@ -248,7 +248,8 @@ def main():
         print "login success"
         count = -1
         while True:
-            count += 1
+            if count == -1:
+                count = 0
             print str(datetime.now())
             departments = search()
 
@@ -261,7 +262,7 @@ def main():
                     if not myDep['Available Space'] == '1':
                         print myDep
                         isSingle = False
-                        
+
                 if not isSingle:      
                     simple_info = [(
                         '%s (Space: %s)' % (
@@ -307,6 +308,8 @@ def main():
                 print 'Sleeping 5 minutes...'
                 time.sleep(10 * 60)
             else:
+                if count == -1:
+                    device_yuxin.push_note("start", '\n')
                 # if not count % 5:
                     # device_yuxin.push_note("heartbeat", '\n')
                     # device_nan.push_note("test!", '\n')
