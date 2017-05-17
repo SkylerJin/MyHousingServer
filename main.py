@@ -284,7 +284,7 @@ def main():
                 print 'Sleeping 5 minutes...'
                 time.sleep(10 * 60)
             else:
-                if not count % 30:
+                if not count % 5:
                     device_yuxin.push_note("heartbeat", '\n')
                     # device_nan.push_note("test!", '\n')
                 # print 'Sleeping 2 minutes...'
