@@ -294,6 +294,27 @@ def main():
                     'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
                 device_nan.push_note(
                     'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
+                time.sleep(10)
+                device.push_note(
+                    'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
+                device_nan.push_note(
+                    'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
+                time.sleep(10)
+                device.push_note(
+                    'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
+                device_nan.push_note(
+                    'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
+                time.sleep(10)
+                device.push_note(
+                    'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
+                device_nan.push_note(
+                    'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
+                time.sleep(10)
+                device.push_note(
+                    'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
+                device_nan.push_note(
+                    'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
+                time.sleep(10)
 
                 print 'Sleeping 5 minutes...'
                 time.sleep(2 * 60)
