@@ -112,14 +112,14 @@ def init_device(pushusername):
             }
 
             # Dump template file
-            with open('conf.json', 'w') as fp:
+            with open('conf_nan.json', 'w') as fp:
                 json.dump(conf, fp)
 
             print >> sys.stderr, 'Please set "conf.json" at first.'
             sys.exit(1)
 
         # Load configuration file
-        with open('conf.json', 'r') as fp:
+        with open('conf_nan.json', 'r') as fp:
             conf = json.load(fp)
 
         # Please refer to related document on 'pushbullet.com'
