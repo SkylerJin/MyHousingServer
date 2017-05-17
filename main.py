@@ -142,8 +142,8 @@ def search():
     payload = {
         'fld24526': 49,  # Ready to process: {49(Yes)}
         'fld24527': '',  # Furnishings: {Furnished, Unfurnished}
-        'fld24524': 'September 1',  # Contract start date: {July 1, July 16, August 1, August 16, September 1, September 16}
-        'dateflddtArrival': '9/1/2017',  # Arrival date: %-m/%-d/%Y (e.g., 8/15/2017)
+        'fld24524': '',  # Contract start date: {July 1, July 16, August 1, August 16, September 1, September 16}
+        'dateflddtArrival': '9/17/2017',  # Arrival date: %-m/%-d/%Y (e.g., 8/15/2017)
         'dateValueflddtArrival': '',
         'fldFunction': 6164,
         'btnSubmit': 'Search'
