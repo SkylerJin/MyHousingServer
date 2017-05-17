@@ -13,11 +13,11 @@ from datetime import datetime
 import getpass
 from pprint import pprint
 
-import requests
-from lxml import html
+import lib.requests
+from lib.lxml import html
 
-import pushbullet
-from pushbullet import Pushbullet
+import lib.pushbullet
+from lib.pushbullet import Pushbullet
 
 LOGIN_PAGE_URL = 'https://weblogin.umich.edu/'
 LOGIN_POST_URL = 'https://weblogin.umich.edu/cosign-bin/cosign.cgi'
