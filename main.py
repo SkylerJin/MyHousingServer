@@ -54,107 +54,59 @@ def init_device(pushusername):
 
     # Check configuration file 'conf.json'
     if pushusername == 'yuxin':
-        if not os.path.exists('conf.json'):
-            conf = {
-                'pushbullet_access_token': '',
-                'device_name': ''
-            }
+        configname = 'conf_yuxin.json'
+    else if pushusername == 'nan':
+        configname = 'conf_nan.json'
 
-            # Dump template file
-            with open('conf.json', 'w') as fp:
-                json.dump(conf, fp)
+    if not os.path.exists(configname):
+        conf = {
+            'pushbullet_access_token': '',
+            'device_name': ''
+        }
 
-            print >> sys.stderr, 'Please set "conf.json" at first.'
-            sys.exit(1)
+        # Dump template file
+        with open(configname, 'w') as fp:
+            json.dump(conf, fp)
 
-        # Load configuration file
-        with open('conf.json', 'r') as fp:
-            conf = json.load(fp)
+        print >> sys.stderr, 'Please set "conf.json" at first.'
+        sys.exit(1)
 
-        # Please refer to related document on 'pushbullet.com'
-        access_token = conf.get('pushbullet_access_token', None)
-        device_name = conf.get('device_name', None)
+    # Load configuration file
+    with open(configname, 'r') as fp:
+        conf = json.load(fp)
 
-        # Check access token
-        if access_token is None:
-            print >> sys.stderr, 'Please set your own pushbullet access token.'
-            sys.exit(1)
+    # Please refer to related document on 'pushbullet.com'
+    access_token = conf.get('pushbullet_access_token', None)
+    device_name = conf.get('device_name', None)
 
-        try:
-            pb = Pushbullet(access_token)
-        except pushbullet.errors.InvalidKeyError:
-            print >> sys.stderr, 'Wrong api key!'
-            sys.exit(1)
+    # Check access token
+    if access_token is None:
+        print >> sys.stderr, 'Please set your own pushbullet access token.'
+        sys.exit(1)
 
-        # Check device name
-        if device_name is None:
-            print >> sys.stderr, 'Please set your own device name.'
-            sys.exit(1)
+    try:
+        pb = Pushbullet(access_token)
+    except pushbullet.errors.InvalidKeyError:
+        print >> sys.stderr, 'Wrong api key!'
+        sys.exit(1)
 
-        try:
-            device = pb.get_device(device_name)
-        except pushbullet.errors.InvalidKeyError:
-            print >> sys.stderr, 'Wrong device name!'
-            device_names = [device.nickname for device in pb.devices]
-            print >> sys.stderr, 'Please select from: %s.' % (
-                ','.join(device_names))
-            sys.exit(1)
+    # Check device name
+    if device_name is None:
+        print >> sys.stderr, 'Please set your own device name.'
+        sys.exit(1)
 
-        # Print the information of the device
-        print device
+    try:
+        device = pb.get_device(device_name)
+    except pushbullet.errors.InvalidKeyError:
+        print >> sys.stderr, 'Wrong device name!'
+        device_names = [device.nickname for device in pb.devices]
+        print >> sys.stderr, 'Please select from: %s.' % (
+            ','.join(device_names))
+        sys.exit(1)
 
-        return device
-    else:
-        if not os.path.exists('conf_nan.json'):
-            conf = {
-                'pushbullet_access_token': '',
-                'device_name': ''
-            }
-
-            # Dump template file
-            with open('conf_nan.json', 'w') as fp:
-                json.dump(conf, fp)
-
-            print >> sys.stderr, 'Please set "conf.json" at first.'
-            sys.exit(1)
-
-        # Load configuration file
-        with open('conf_nan.json', 'r') as fp:
-            conf = json.load(fp)
-
-        # Please refer to related document on 'pushbullet.com'
-        access_token = conf.get('pushbullet_access_token', None)
-        device_name = conf.get('device_name', None)
-
-        # Check access token
-        if access_token is None:
-            print >> sys.stderr, 'Please set your own pushbullet access token.'
-            sys.exit(1)
-
-        try:
-            pb = Pushbullet(access_token)
-        except pushbullet.errors.InvalidKeyError:
-            print >> sys.stderr, 'Wrong api key!'
-            sys.exit(1)
-
-        # Check device name
-        if device_name is None:
-            print >> sys.stderr, 'Please set your own device name.'
-            sys.exit(1)
-
-        try:
-            device = pb.get_device(device_name)
-        except pushbullet.errors.InvalidKeyError:
-            print >> sys.stderr, 'Wrong device name!'
-            device_names = [device.nickname for device in pb.devices]
-            print >> sys.stderr, 'Please select from: %s.' % (
-                ','.join(device_names))
-            sys.exit(1)
-
-        # Print the information of the device
-        print device
-
-        return device
+    # Print the information of the device
+    print device
+    return device
 
 
 def extract_info_from_html_elems(elems):
@@ -208,11 +160,11 @@ def search():
     if result.text.find(NO_RESULT_TEXT) != -1:
         # No result
         print 'No result'
-        return None
+        # return None
 
-    # f = open('myhtml.html')
-    # txt = f.read()
-    # tree = html.fromstring(txt)
+    f = open('myhtml.html')
+    txt = f.read()
+    tree = html.fromstring(txt)
     # Parse html file
     tree = html.fromstring(result.text)
 
