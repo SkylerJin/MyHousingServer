@@ -55,7 +55,7 @@ def init_device(pushusername):
     # Check configuration file 'conf.json'
     if pushusername == 'yuxin':
         configname = 'conf_yuxin.json'
-    else if pushusername == 'nan':
+    elif pushusername == 'nan':
         configname = 'conf_nan.json'
 
     if not os.path.exists(configname):
