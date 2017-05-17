@@ -1,4 +1,4 @@
-lxml==3.7.3
-cssselect==1.0.1
-pushbullet.py==0.10.0
-requests==2.13.0
+lxml
+cssselect
+pushbullet.py
+requests
