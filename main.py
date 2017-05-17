@@ -255,52 +255,60 @@ def main():
             if departments is not None:
                 pprint(departments)
 
-                simple_info = [(
-                    '%s (Space: %s)' % (
-                        department['Name'],
-                        department['Available Space'])) for department in departments]
+                isSingle = True
 
-                device_yuxin.push_note(
-                    'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
-                device_nan.push_note(
-                    'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
-                device_jien.push_note(
-                    'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
-                time.sleep(5)
-                device_yuxin.push_note(
-                    'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
-                device_nan.push_note(
-                    'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
-                device_jien.push_note(
-                    'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
-                time.sleep(5)
-                device_yuxin.push_note(
-                    'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
-                device_nan.push_note(
-                    'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
-                device_jien.push_note(
-                    'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
-                time.sleep(5)
-                device_yuxin.push_note(
-                    'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
-                device_nan.push_note(
-                    'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
-                device_jien.push_note(
-                    'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
-                time.sleep(5)
-                device_yuxin.push_note(
-                    'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
-                device_nan.push_note(
-                    'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
-                device_jien.push_note(
-                    'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
-                time.sleep(5)
+                for myDep in departments:
+                    if not myDep['Available Space'] == '1':
+                        print myDep
+                        isSingle = False
+                        
+                if not isSingle:      
+                    simple_info = [(
+                        '%s (Space: %s)' % (
+                            department['Name'],
+                            department['Available Space'])) for department in departments]
+
+                    device_yuxin.push_note(
+                        'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
+                    device_nan.push_note(
+                        'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
+                    device_jien.push_note(
+                        'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
+                    time.sleep(5)
+                    device_yuxin.push_note(
+                        'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
+                    device_nan.push_note(
+                        'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
+                    device_jien.push_note(
+                        'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
+                    time.sleep(5)
+                    device_yuxin.push_note(
+                        'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
+                    device_nan.push_note(
+                        'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
+                    device_jien.push_note(
+                        'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
+                    time.sleep(5)
+                    device_yuxin.push_note(
+                        'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
+                    device_nan.push_note(
+                        'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
+                    device_jien.push_note(
+                        'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
+                    time.sleep(5)
+                    device_yuxin.push_note(
+                        'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
+                    device_nan.push_note(
+                        'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
+                    device_jien.push_note(
+                        'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
+                    time.sleep(5)
 
                 print 'Sleeping 5 minutes...'
                 time.sleep(10 * 60)
             else:
-                if not count % 5:
-                    device_yuxin.push_note("heartbeat", '\n')
+                # if not count % 5:
+                    # device_yuxin.push_note("heartbeat", '\n')
                     # device_nan.push_note("test!", '\n')
                 # print 'Sleeping 2 minutes...'
                 time.sleep(2 * 60)
