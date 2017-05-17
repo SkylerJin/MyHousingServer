@@ -276,7 +276,9 @@ def main():
     pwd = "Irislyx1024"
     if login(username, pwd):
         print "login success"
+        count = 0
         while True:
+            count += 1
             print str(datetime.now())
             departments = search()
 
@@ -296,8 +298,9 @@ def main():
                 print 'Sleeping 5 minutes...'
                 time.sleep(2 * 60)
             else:
-                device.push_note("test!", '\n')
-                device_nan.push_note("test!", '\n')
+                if not count % 30:
+                    device.push_note("test!", '\n')
+                    device_nan.push_note("test!", '\n')
                 # print 'Sleeping 2 minutes...'
                 time.sleep(2 * 60)
     else:
