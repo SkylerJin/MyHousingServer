@@ -158,11 +158,11 @@ def search():
         print 'No result'
         # return None
 
-    f = open('myhtml.html')
-    txt = f.read()
-    tree = html.fromstring(txt)
+    # f = open('myhtml.html')
+    # txt = f.read()
+    # tree = html.fromstring(txt)
     # Parse html file
-    # tree = html.fromstring(result.text)
+    tree = html.fromstring(result.text)
 
     # Select apartment list
     elems = tree.cssselect('table.DataTable tr')
