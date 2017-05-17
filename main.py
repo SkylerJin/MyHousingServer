@@ -248,8 +248,7 @@ def main():
         print "login success"
         count = -1
         while True:
-            if count == -1:
-                count = 0
+            count += 1
             print str(datetime.now())
             departments = search()
 
@@ -308,7 +307,7 @@ def main():
                 print 'Sleeping 5 minutes...'
                 time.sleep(10 * 60)
             else:
-                if count == -1:
+                if count == 0:
                     device_yuxin.push_note("start", '\n')
                 # if not count % 5:
                     # device_yuxin.push_note("heartbeat", '\n')
