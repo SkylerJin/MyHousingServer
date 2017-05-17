@@ -57,6 +57,8 @@ def init_device(pushusername):
         configname = 'conf_yuxin.json'
     elif pushusername == 'nan':
         configname = 'conf_nan.json'
+    elif pushusername == 'jien':
+        configname = 'conf_jien.json'
 
     if not os.path.exists(configname):
         conf = {
@@ -160,13 +162,13 @@ def search():
     if result.text.find(NO_RESULT_TEXT) != -1:
         # No result
         print 'No result'
-        # return None
+        return None
 
-    f = open('myhtml.html')
-    txt = f.read()
-    tree = html.fromstring(txt)
+    # f = open('myhtml.html')
+    # txt = f.read()
+    # tree = html.fromstring(txt)
     # Parse html file
-    # tree = html.fromstring(result.text)
+    tree = html.fromstring(result.text)
 
     # Select apartment list
     elems = tree.cssselect('table.DataTable tr')
@@ -222,8 +224,9 @@ def login(username, password):
 
 
 def main():
-    device = init_device('yuxin')
+    device_yuxin = init_device('yuxin')
     device_nan = init_device('nan')
+    device_jien = init_device('jien')
     username = "yuxinliu"
     pwd = "Irislyx1024"
     if login(username, pwd):
@@ -242,38 +245,48 @@ def main():
                         department['Name'],
                         department['Available Space'])) for department in departments]
 
-                device.push_note(
+                device_yuxin.push_note(
                     'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
                 device_nan.push_note(
                     'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
-                time.sleep(10)
-                device.push_note(
+                device_jien.push_note(
+                    'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
+                time.sleep(5)
+                device_yuxin.push_note(
                     'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
                 device_nan.push_note(
                     'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
-                time.sleep(10)
-                device.push_note(
+                device_jien.push_note(
+                    'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
+                time.sleep(5)
+                device_yuxin.push_note(
                     'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
                 device_nan.push_note(
                     'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
-                time.sleep(10)
-                device.push_note(
+                device_jien.push_note(
+                    'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
+                time.sleep(5)
+                device_yuxin.push_note(
                     'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
                 device_nan.push_note(
                     'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
-                time.sleep(10)
-                device.push_note(
+                device_jien.push_note(
+                    'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
+                time.sleep(5)
+                device_yuxin.push_note(
                     'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
                 device_nan.push_note(
                     'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
-                time.sleep(10)
+                device_jien.push_note(
+                    'NORTHWOOD!!!!!!!', '\n'.join(simple_info))
+                time.sleep(5)
 
                 print 'Sleeping 5 minutes...'
-                time.sleep(2 * 60)
+                time.sleep(10 * 60)
             else:
                 if not count % 30:
-                    device.push_note("test!", '\n')
-                    device_nan.push_note("test!", '\n')
+                    device_yuxin.push_note("heartbeat", '\n')
+                    # device_nan.push_note("test!", '\n')
                 # print 'Sleeping 2 minutes...'
                 time.sleep(2 * 60)
     else:
