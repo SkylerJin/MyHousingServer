@@ -150,17 +150,27 @@ def search():
     }
 
     session_requests.get(APARTMENT_SELECTION_PAGE_URL)
-
+    
     print 'Search'
+    f = open("output.txt","a")
+    print >> f, 'Search'
+    print >> f, str(datetime.now())
+    f.close()
     result = session_requests.post(
         SEARCH_ROOM_URL, data=payload)
 
     if result.status_code / 100 != 2:
+        f = open("output.txt","a")
+        print >> f, 'Failed'
+        f.close()
         print 'Failed'
         return None
 
     if result.text.find(NO_RESULT_TEXT) != -1:
         # No result
+        f = open("output.txt","a")
+        print >> f, 'No result'
+        f.close()
         print 'No result'
         return None
 
@@ -176,12 +186,17 @@ def search():
     # Check the number of elements (at lease one row)
     if len(elems) < 1:
         # No result
+        f = open("output.txt","a")
+        print >> f, 'No result (false positive)'
+        f.close()
         print 'No result (false positive)'
         return None
 
     # Extract from html elements
     departments = extract_info_from_html_elems(elems)
-
+    f = open("output.txt","a")
+    print >> f, 'Results!'
+    f.close()
     print 'Results!'
     return departments
 
