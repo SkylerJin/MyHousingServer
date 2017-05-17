@@ -238,7 +238,7 @@ def main():
                 print 'Sleeping 5 minutes...'
                 time.sleep(2 * 60)
             else:
-                # device.push_note("test!", '\n')
+                device.push_note("test!", '\n')
                 # print 'Sleeping 2 minutes...'
                 time.sleep(2 * 60)
     else:
