@@ -9,7 +9,7 @@ import os
 import sys
 import json
 import time
-from datetime import datetime
+# from datetime import datetime
 import getpass
 from pprint import pprint
 
@@ -154,7 +154,7 @@ def search():
     print 'Search'
     f = open("output.txt","a")
     print >> f, 'Search'
-    print >> f, str(datetime.now())
+    print >> f, str(time.localtime())
     f.close()
     result = session_requests.post(
         SEARCH_ROOM_URL, data=payload)
