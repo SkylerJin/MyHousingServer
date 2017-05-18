@@ -249,7 +249,7 @@ def main():
         count = -1
         while True:
             count += 1
-            print str(datetime.now())
+            print str(time.localtime())
             departments = search()
 
             if departments is not None:
