@@ -1,10 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-# @Date    : 2017-04-12 22:05:02
-# @Author  : Tom Hu (h1994st@gmail.com)
-# @Link    : http://h1994st.com
-# @Version : 1.0
-
 import os
 import sys
 import json
@@ -242,8 +235,8 @@ def main():
     device_yuxin = init_device('yuxin')
     device_nan = init_device('nan')
     device_jien = init_device('jien')
-    username = "yuxinliu"
-    pwd = "Irislyx1024"
+    username = "" // UNIQUE NAME
+    pwd = "" //
     if login(username, pwd):
         print "login success"
         count = -1
